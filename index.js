@@ -26,10 +26,10 @@ myFunction();
     
 For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
 
-function summation(num) {
-  let count = 0;
+function summation(num) { 
+  let count = 0; //sum total to be returned
 
-  for (let i = num; i > 0; i--) {
+  for (let i = num; i > 0; i--) { //starts at num and adds each descending whole number from num to 1 to the count
     count += i;
   }
   return count;
@@ -58,19 +58,24 @@ const zooAnimals = [
   displayNames will be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
   */
 
-  function animalNames(/*Your Code Here*/){
-    /*Your Code Here*/
+  function animalNames(animals){
+    let displayNames = []; //return array
+
+    animals.forEach(animal => displayNames.push(`name: ${animal.animal_name}, scientific: ${animal.scientific_name}`)); //loops through animals array creates a string with the names of each animal that is pushed to the return array 
+
+    return displayNames;
   }
   
-
+  //console.log(animalNames(zooAnimals))
+  
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
   The zoo needs a list of all their animal's names converted to lower case. 
   Using lowerCaseNames use .map() to create a new array of strings with the animal's names in lowercase and return the new array. 
   For example: ['jackal, asiatic', .....]
   */
 
-  function lowerCaseNames(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowerCaseNames(animals){
+    return animals.map(animal => animal.animal_name.toLowerCase()); //returns a new array populated by lower case animal names, which has been mapped from the animal array 
   }
   
   
@@ -79,8 +84,8 @@ const zooAnimals = [
   Using lowPopulationAnimals use .filter() to create a new array of objects which contains only the animals with a population of less than 5.
   */
 
-  function lowPopulationAnimals(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowPopulationAnimals(animals){
+    return animals.filter(animal => animal.population < 5); //checks to see if an animal's population is less than 5, and adds it to a new array if so; the new array is then returned
   }
   
 
@@ -90,8 +95,10 @@ const zooAnimals = [
   Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count.
   */
 
-  function USApop(/*Your Code Here*/){
-    /*Your Code Here*/
+  function USApop(animals){
+    return animals.reduce(function(sum,animal){ //creates an accumulator, 'sum', which adds the population of each animal in the array; the total sum is returned
+      return sum += animal.population;
+    },0)
   }
   
   
@@ -103,28 +110,28 @@ const zooAnimals = [
     * The consume function should return the invocation of cb, passing a and b into cb as arguments
   */
 
-  function consume(/*Your Code Here */){
-    /*Your Code Here */
+  function consume(a,b,cb){
+    return cb(a,b); //cb is the callback function passed into higher order function consume; consume returns the invocation of cb, the latter of which uses a and b as parameters
   }
  
   
   /* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
  // 🦁🦁🦁 Use add to return the sum of two numbers 🦁🦁🦁
   
-function add(/*Your Code Here */){
-    /*Your Code Here*/
+function add(a,b){
+    return a+b; //this function adds a and b; when called by consume with consume(a,b,add), consume will return the sum of a and b
   }
 
 // 🦁🦁🦁 Use multiply to return the product of two numbers 🦁🦁🦁
   
-function multiply(/*Your Code Here */){
-   /*Your Code Here */
+function multiply(a,b){
+   return a*b; //this function multiples a and b; when called by consume with consume(a,b,multiply), consume will return the product of a and b
   }
 
  // 🦁🦁🦁 Use greeting to accept a first and last name and return "Hello {first-name} {last-name}, nice to meet you!" 🦁🦁🦁
   
-function greeting(/*Your Code Here */){
-   return /*Your Code Here */
+function greeting(first,last){
+   return `Hello ${first} ${last}, nice to meet you!` //returns the greeting from the instructions; when called by consume with consume(a,b,greeting), consume will return the greeting using the names given as arguments
   }
   
   // 🦁🦁🦁 Step 3: Check your work by un-commenting the following calls to consume(): 🦁🦁🦁 
