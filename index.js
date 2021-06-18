@@ -17,7 +17,7 @@ myFunction();
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
 
-//internal is defined within the scope of the function myFunction. As its name implies, nestedFunction is also defined within myFunction. nestedFunction uses a closure to reach outside of its scope and access internal, which it can do because both internal and nested Function are within the scope of myFunction.
+//internal is defined within the scope of the function myFunction. As its name implies, nestedFunction is also defined within myFunction. nestedFunction uses a closure to reach outside of its scope and access internal, which it can do because both internal and nested Function are within the scope of myFunction. A closure also occurs when myFunction reaches outside of its scope to access external, which is defined globally.
 
 /* 🚀🚀🚀 Task 2: Counter 🚀🚀🚀 */
 /* Use summation to do the following:
@@ -35,6 +35,7 @@ function summation(num) {
   return count;
   }
  
+//console.log("task 2",summation(4))
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
 // Given this zoo data from around the United States, follow the instructions below. Use the specific array methods in the requests below to solve the problems.
@@ -66,7 +67,7 @@ const zooAnimals = [
     return displayNames;
   }
   
-  //console.log(animalNames(zooAnimals))
+  //console.log("topic 2.1",animalNames(zooAnimals))
   
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
   The zoo needs a list of all their animal's names converted to lower case. 
@@ -78,6 +79,7 @@ const zooAnimals = [
     return animals.map(animal => animal.animal_name.toLowerCase()); //returns a new array populated by lower case animal names, which has been mapped from the animal array 
   }
   
+  //console.log("topic 2.2",lowerCaseNames(zooAnimals))
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
   The zoo is concerned about animals with a lower population count. 
@@ -158,7 +160,6 @@ function CuboidMaker(data){ //receives an object as a parameter
   this.height = data.height;
 }
 
-
 /* 🐴🐴🐴 Step 2: Volume Method 🐴🐴🐴
   Create a method called volume using CuboidMaker's prototype that returns the volume of a given cuboid's length, width, and height
   Formula for cuboid volume: length * width * height   */
@@ -166,8 +167,6 @@ function CuboidMaker(data){ //receives an object as a parameter
 CuboidMaker.prototype.volume = function() { //adds a new method to the CuboidMaker prototype
   return this.length*this.height*this.width; //uses the cuboid formula to return volume
 }
-
-
 
 /* 🐴🐴🐴 Step 3: Surface Area Method 🐴🐴🐴
   Create another method called surfaceArea using CuboidMaker's prototype that returns the surface area of a given cuboid's length, width, and height. 
@@ -178,19 +177,15 @@ CuboidMaker.prototype.surfaceArea = function() { //adds a new method to the Cubo
   return 2*(this.length*this.width + this.length*this.height + this.width*this.height); //uses the cuboid formula to return surface area
 }
 
-
-
 /* 🐴🐴🐴 Step 4: Create a new object that uses CuboidMaker 🐴🐴🐴
   Create an object called cuboid that uses the new keyword to use our CuboidMaker constructor
   Add properties and values of length: 4, width: 5, and height: 5 to cuboid. */
 
-let cuboid = new CuboidMaker({
+let cuboid = new CuboidMaker({ //new object, to be tested below
   length:4,
   width:5,
   height:5
 })
-
-
 
 // 🐴🐴🐴 Test your volume and surfaceArea methods by uncommenting the logs below: 🐴🐴🐴
 // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
@@ -201,24 +196,49 @@ let cuboid = new CuboidMaker({
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
 //🦄🦄🦄 1. Take your prototypes from above and refactor into class syntax. Please rename your class CuboidMakerTwo and your object cuboidTwo 🦄🦄🦄
 class CuboidMakerTwo{
+  constructor(data){ //uses a constructor function inside the class to create the object with 
+  this.length = data.length; //initializes length, width, and height from the received object's properties
+  this.width = data.width;
+  this.height = data.height;
+  }
 
+  volume() { //volume and SA formulas are the same as when using prototypes; methods have been brought into the class per class syntax
+    return this.length*this.height*this.width;
+  }
+
+  surfaceArea() {
+    return 2*(this.length*this.width + this.length*this.height + this.width*this.height); 
+  }
 }
 
+let cuboidTwo = new CuboidMakerTwo({ //new object, to be tested below
+  length:4,
+  width:5,
+  height:5
+})
 
 //🦄🦄🦄 Test your volume and surfaceArea methods by uncommenting the logs below: 🦄🦄🦄
 // console.log(cuboidTwo.volume()); // 100
 // console.log(cuboidTwo.surfaceArea()); // 130
 
 
-
-
-
 // 🦄 💪 Stretch Task: Extend the base class CuboidMaker with a sub class called CubeMaker.  Find out the formulas for volume and surface area for cubes and create those methods using the dimension properties from CuboidMaker.  Test your work by logging out your volume and surface area. 🦄 💪
   
+class CubeMaker extends CuboidMakerTwo { //CubeMaker is a sub class extending the parent class CuboidMakerTwo
+  constructor(data) { 
+    super(data); //CubeMaker uses its constructor function to pass up the parameters from data to the parent class constructor function, initializing a cube object with the parameters from data
+  }
+}
 
+//the formulas for volume and SA will be exactly the same for a cube, since length, width, and height are the same for a cube
 
+let cube = new CubeMaker ({ //volume should be 125, SA should be 150 for the cube created here
+  length: 5,
+  width:5,
+  height:5
+})
 
-
+// console.log(`volume: ${cube.volume()}, surface area: ${cube.surfaceArea()}`) 
 
   /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
   function foo(){
