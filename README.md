@@ -28,14 +28,19 @@ Demonstrate your understanding of this week's concepts by answering the followin
 Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read.
 
 1. Briefly compare and contrast `.forEach` & `.map` (2-3 sentences max)
+Both .forEach and .map are array functions that iterate through each item of the array. However, .map requires a return statement and automatically returns a new array whereas .forEach does not. 
 
 2. Explain the difference between a callback and a higher order function.
+Higher order functions take in functions as arguments, whereas callback functions are the functions that are passed through as arguments to higher order functions. 
 
 3. Can you explain what a closure is and how you used it in the counter function? 
+Closures occur when a function accesses something outside of its scope, such as a variable. In Task 2's counter function, a closure occurs in the for loop when it references the variable that is storing the summation.
 
 4. Describe the four principles of the 'this' keyword.
+The keyword 'this' can be bound in four ways, depending on the context in which it is used - these are window/global binding, implicit binding, new binding, and explicit binding. Window binding occurs when this is used in the global scope, and means that 'this' refers to the window / console Object. Implicit binding occurs when an object calls a function with a '.' and means that 'this' refers to whatever object preceded the dot. New binding refers to when a new object is created by means of a constructor function, and in these cases 'this' refers to the object created by the function. Explicit binding occurs when the call or apply methods are used, thus explicitly stating what object 'this' refers to.
 
 5. Why do we need super() in an extended class?
+super() is used to pass attributes up to the parent class that has been extended. 
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade. 
 

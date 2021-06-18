@@ -17,9 +17,7 @@ myFunction();
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
 
-
-
-
+//internal is defined within the scope of the function myFunction. As its name implies, nestedFunction is also defined within myFunction. nestedFunction uses a closure to reach outside of its scope and access internal, which it can do because both internal and nested Function are within the scope of myFunction.
 
 /* 🚀🚀🚀 Task 2: Counter 🚀🚀🚀 */
 /* Use summation to do the following:
@@ -28,9 +26,13 @@ myFunction();
     
 For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
 
-function summation(/*Your Code Here*/) {
-  /*Your Code Here*/
+function summation(num) {
+  let count = 0;
 
+  for (let i = num; i > 0; i--) {
+    count += i;
+  }
+  return count;
   }
  
 
