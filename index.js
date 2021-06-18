@@ -90,7 +90,8 @@ const zooAnimals = [
     return animals.filter(animal => animal.population < 5); //checks to see if an animal's population is less than 5, and adds it to a new array if so; the new array is then returned
   }
   
-
+  //console.log("topic 2.3", lowPopulationAnimals(zooAnimals))
+  
   /* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
   The zoo needs to know their total animal population across the United States. 
   Using USApop find the total population from the zoos array using the .reduce() method. 
@@ -99,10 +100,11 @@ const zooAnimals = [
 
   function USApop(animals){
     return animals.reduce(function(sum,animal){ //creates an accumulator, 'sum', which adds the population of each animal in the array; the total sum is returned
-      return sum += animal.population;
+      return sum + animal.population;
     },0)
   }
   
+  //console.log(("topic 2.4",USApop(zooAnimals)))
   
   // 🦁🦁🦁 Callbacks 🦁🦁🦁  
   /* 🦁🦁🦁 Step 1: Create a higher-order function 🦁🦁🦁
@@ -116,7 +118,6 @@ const zooAnimals = [
     return cb(a,b); //cb is the callback function passed into higher order function consume; consume returns the invocation of cb, the latter of which uses a and b as parameters
   }
  
-  
   /* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
  // 🦁🦁🦁 Use add to return the sum of two numbers 🦁🦁🦁
   
@@ -135,19 +136,22 @@ function multiply(a,b){
 function greeting(first,last){
    return `Hello ${first} ${last}, nice to meet you!` //returns the greeting from the instructions; when called by consume with consume(a,b,greeting), consume will return the greeting using the names given as arguments
   }
-  
+
   // 🦁🦁🦁 Step 3: Check your work by un-commenting the following calls to consume(): 🦁🦁🦁 
   // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
-  // console.log(consume(2, 2, add)); // 4
-  // console.log(consume(10, 16, multiply)); // 160
-  // console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
+  console.log(consume(2, 2, add)); // 4
+  console.log(consume(10, 16, multiply)); // 160
+  console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
   
   
 // 🦁💪 Stretch: If you haven't already, convert your array method callbacks into arrow functions - make sure you comment out this section before you submit your work 🦁💪
- 
 
-
-
+// function USApopArrow(animals){
+//   return animals.reduce((sum,animal) => {
+//     return sum + animal.population},0)
+// }
+// console.log("2.4 with arrow",USApopArrow(zooAnimals))
+// other functions already in arrow syntax
 
 // 🐴🐴🐴 Topic 3: Prototypes 🐴🐴🐴 //
 //🐴🐴🐴 Task: You are to build a cuboid maker that can return values for a cuboid's volume or surface area. Cuboids are similar to cubes but do not have even sides. Follow the steps in order to accomplish this challenge. 🐴🐴🐴
@@ -189,8 +193,8 @@ let cuboid = new CuboidMaker({ //new object, to be tested below
 
 // 🐴🐴🐴 Test your volume and surfaceArea methods by uncommenting the logs below: 🐴🐴🐴
 // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
-// console.log(cuboid.volume()); // 100
-// console.log(cuboid.surfaceArea()); // 130
+console.log(cuboid.volume()); // 100
+console.log(cuboid.surfaceArea()); // 130
  
 
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
@@ -218,8 +222,8 @@ let cuboidTwo = new CuboidMakerTwo({ //new object, to be tested below
 })
 
 //🦄🦄🦄 Test your volume and surfaceArea methods by uncommenting the logs below: 🦄🦄🦄
-// console.log(cuboidTwo.volume()); // 100
-// console.log(cuboidTwo.surfaceArea()); // 130
+console.log(cuboidTwo.volume()); // 100
+console.log(cuboidTwo.surfaceArea()); // 130
 
 
 // 🦄 💪 Stretch Task: Extend the base class CuboidMaker with a sub class called CubeMaker.  Find out the formulas for volume and surface area for cubes and create those methods using the dimension properties from CuboidMaker.  Test your work by logging out your volume and surface area. 🦄 💪
